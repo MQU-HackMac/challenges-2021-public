@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+  </head>
+</html>
+
+<body>
+  <script>
+    const config = {
+      apiKey: 'AIzaSyAHI0WKAEz6V_LXjQEDy7jaPG5sVN0UYss',
+      authDomain: 'firevault-1a5bc.firebaseapp.com',
+      projectId: 'firevault-1a5bc',
+      storageBucket: 'firevault-1a5bc.appspot.com',
+      messagingSenderId: '459820124037',
+      appId: '1:459820124037:web:6c173f913aac55394ca6ec',
+      measurementId: 'G-5RT5JH07YK',
+    };
+
+    firebase.initializeApp(config);
+    const db = firebase.firestore();
+
+    async function win() {
+    //   await firebase
+    //     .auth()
+    //     .signInWithEmailAndPassword('test@email.com', 'samsamsam');
+      const collections = await db.listCollections();
+      console.log(collections);
+    //   const citiesRef = db.collection('cookies');
+    //   const snapshot = await citiesRef.get();
+
+    //   if (snapshot.empty) {
+    //     console.log('No matching documents.');
+    //     return;
+    //   }
+
+    //   snapshot.forEach((doc) => {
+    //     console.log(doc.id, '=>', doc.data());
+    //   });
+    }
+    win();
+  </script>
+</body>

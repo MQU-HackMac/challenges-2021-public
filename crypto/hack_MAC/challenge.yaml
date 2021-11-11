@@ -1,0 +1,13 @@
+apiVersion: kctf.dev/v1
+kind: Challenge
+metadata:
+  name: hack-mac
+spec:
+  deployed: true
+  powDifficultySeconds: 0
+  network:
+    public: true
+  healthcheck:
+    # TIP: disable the healthcheck during development
+    enabled: false
+  image: eu.gcr.io/hack-mac-2021-kctf/hack-mac-challenge:968b1bea60885f3f3d3d2d23372b967829a4d4ab2ce04b62cc8e7b0983058b01

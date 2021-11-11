@@ -1,0 +1,6 @@
+User-agent: Googlebot-Image
+Disallow: /static/images/private8ed164se81/flag.png
+
+User-agent: *
+Allow: /
+

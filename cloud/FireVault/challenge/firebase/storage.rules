@@ -1,0 +1,14 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+
+    match /{uid}/{fileName} {
+      allow read: if true;
+      allow delete: if request.auth.uid == uid;
+      allow create: if request.auth.uid == uid && request.resource.size <= request.auth.token.storageLeftInBytes && !request.auth.token.storageFull;
+    }
+  }
+}

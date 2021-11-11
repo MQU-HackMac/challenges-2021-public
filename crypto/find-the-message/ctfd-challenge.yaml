@@ -1,0 +1,60 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "Find the Message"
+author: "Alexander Lynch"
+category: crypto
+description: |
+  You are assigned to find a message that contains a password that will allow you authenticate the systems of Macquarie. However, there is a twist in finding the solution of the message so keep an eye onto the scheme into how to decrypt the message.
+
+  **Attached Files:**
+  - find_the_message.py (sha256: faeb916e4c1e8a9ac9243ac06fe5ddd95bf7cf2dd2a0541b6061f42a30f96e94)
+value: 500
+type: dynamic
+extra:
+    initial: 500
+    decay: 15
+    minimum: 100
+
+image: null
+host: null
+
+# Optional settings
+
+# connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
+# connection_info: https://challenges-ten.vercel.app/
+
+# Flags specify answers that your challenge use. You should generally provide at least one.
+# Can be removed if unused
+# Accepts strings or dictionaries of CTFd API data
+flags:
+    - HACKMAC{AFs'gx I JKeyGR eQbrPs$}
+
+tags:
+    - beginner
+
+# Provide paths to files from the same directory that this file is in
+# Accepts strings
+# files:
+#     - publish/flag
+
+# Hints are used to give players a way to buy or have suggestions. They are not
+# required but can be nice.
+# Can be removed if unused
+# Accepts dictionaries or strings
+# hints:
+#     - {
+#         content: "This hint costs points",
+#         cost: 10
+#     }
+#     - This hint is free
+
+# The state of the challenge.
+# If the field is omitted, the challenge is visible by default.
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"

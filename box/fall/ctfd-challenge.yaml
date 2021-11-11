@@ -1,0 +1,67 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "Fall"
+author: "Donavan"
+category: box 
+description: |
+    This is a boot2root meaning your goal is to achieve a root shell which is the highest privilege on a linux machine.
+
+    The flag will be in /root/root.txt
+
+    This is the original box: https://www.vulnhub.com/entry/digitalworldlocal-fall,726/
+
+    Here's a writeup to help if you're struggling: https://nepcodex.com/2021/09/writeup-of-fall-from-vulnhub-walkthrough/
+
+    For the reverse shell part I recommend at looking at ngrok: https://ngrok.com
+
+    For any type of fuzzing or bruteforcing, please use the provided wordlists. Do NOT use any external wordlists to avoid taking server resources.
+value: 200
+type: dynamic
+extra:
+    initial: 200
+    decay: 15
+    minimum: 150
+
+image: null
+host: null
+
+# Optional settings
+
+# connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
+connection_info: fall.chals.hackmac.xyz
+
+# Flags specify answers that your challenge use. You should generally provide at least one.
+# Can be removed if unused
+# Accepts strings or dictionaries of CTFd API data
+flags:
+    - HACKMAC{im_feeling_fuzzy489168}
+
+tags:
+    - beginner 
+
+# Provide paths to files from the same directory that this file is in
+# Accepts strings
+# files:
+#     - dist/source.py
+
+# Hints are used to give players a way to buy or have suggestions. They are not
+# required but can be nice.
+# Can be removed if unused
+# Accepts dictionaries or strings
+# hints:
+#     - {
+#         content: "This hint costs points",
+#         cost: 10
+#     }
+#     - This hint is free
+
+# The state of the challenge.
+# If the field is omitted, the challenge is visible by default.
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"

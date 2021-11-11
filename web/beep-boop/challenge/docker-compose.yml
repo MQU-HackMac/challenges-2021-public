@@ -1,0 +1,10 @@
+version: "3"
+services:
+    flask:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        image: beep-boop 
+        container_name: beep-boop 
+        ports:
+            - 1337:1337

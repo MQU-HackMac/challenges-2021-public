@@ -1,0 +1,13 @@
+apiVersion: kctf.dev/v1
+kind: Challenge
+metadata:
+  name: built-different
+spec:
+  deployed: true
+  powDifficultySeconds: 0
+  network:
+    public: true
+  healthcheck:
+    # TIP: disable the healthcheck during development
+    enabled: false
+  image: eu.gcr.io/hack-mac-2021-kctf/built-different-challenge:8b67e9103233fe0dc4657ff9e6054f06079c850c4f15027e73cb26a61ed2899b

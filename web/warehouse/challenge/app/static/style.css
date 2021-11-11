@@ -1,0 +1,22 @@
+body {
+    background-image: url("/static/background.png");
+}
+
+#content-container {
+    margin: auto;
+    margin-top: 100px;
+    width: 800px;
+    background: rgba(128, 128, 128, 0.527);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.error {
+    color: red;
+}
+
+@media only screen and (max-width: 800px)  {
+    #content-container {
+        width: 100%;
+    }
+}

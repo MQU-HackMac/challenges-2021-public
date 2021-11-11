@@ -1,0 +1,66 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "crimson society"
+author: "Patrick Lin"
+category: forensics 
+description: |
+    One of our employees has gone missing, we believe these images found on a flag drive may explain his disappearance. Please examine the contents in order to determine his status and whereabouts.
+
+    **Attached files:**
+    - illuminate1.jpg (sha256: 74c95541e2a6328b326e6070e51e4e6886a0a889b0e2f70b79cb4c9052d6045d)
+    - illuminate2.jpg (sha256: 7e11e2f6bfdca3ea5e7831f44d2fabe5b9cf125eade72dc52b1c8ab2647953dc)
+    - illuminate3.jpg (sha256: 84dbd3b9bc001428ba8b129bca73ba9e400f5a0f6d6f44d85967beab063f3b14)
+    - illuminate4.jpg (sha256: 4d6a698c713f7a7dfd52f0c9aae93098be3a61c659b7d9cc5e9f36ef6973cb0e)
+value: 500
+type: dynamic
+extra:
+    initial: 500
+    decay: 15
+    minimum: 100
+
+image: null
+host: null
+
+# Optional settings
+
+# connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
+# connection_info: https://challenges-ten.vercel.app/
+
+# Flags specify answers that your challenge use. You should generally provide at least one.
+# Can be removed if unused
+# Accepts strings or dictionaries of CTFd API data
+flags:
+    - HACKMAC{Masquerade}
+
+tags:
+    - beginner
+
+# Provide paths to files from the same directory that this file is in
+# Accepts strings
+# files:
+#     - challenge/illuminate1.jpg
+#     - challenge/illuminate2.jpg
+#     - challenge/illuminate3.jpg
+#     - challenge/illuminate4.jpg
+
+# Hints are used to give players a way to buy or have suggestions. They are not
+# required but can be nice.
+# Can be removed if unused
+# Accepts dictionaries or strings
+# hints:
+#     - {
+#         content: "This hint costs points",
+#         cost: 10
+#     }
+#     - This hint is free
+
+# The state of the challenge.
+# If the field is omitted, the challenge is visible by default.
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"

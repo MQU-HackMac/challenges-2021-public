@@ -1,0 +1,7 @@
+blockz.hackmac.xyz {
+    reverse_proxy 127.0.0.1:5000
+}
+
+blockz.hackmac.xyz:8545 {
+    reverse_proxy 127.0.0.1:5001
+}

@@ -1,0 +1,14 @@
+apiVersion: kctf.dev/v1
+kind: Challenge
+metadata:
+  name: waterfall
+spec:
+  deployed: true
+  powDifficultySeconds: 0
+  network:
+    public: true
+  healthcheck:
+    # TIP: disable the healthcheck during development
+    enabled: true
+    image: eu.gcr.io/hack-mac-2021-kctf/waterfall-healthcheck:2532838a5b3e04328728dea5f22c2cf6a14cd805b24ee2a691d806883c961d8c
+  image: eu.gcr.io/hack-mac-2021-kctf/waterfall-challenge:f807eed960332efa9bb836f244c49b6da2ac6f7a4d89b4ff775bbaade143f2d9

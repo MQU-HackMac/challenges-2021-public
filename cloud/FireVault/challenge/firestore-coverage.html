@@ -1,0 +1,3506 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Firestore Rule Coverage Report</title>
+<style>
+.coverage-expr {
+  padding-bottom: 4px;
+  display: inline-block;
+  border-bottom: 3px solid black;
+  vertical-align: top;
+}
+.coverage-expr:hover {
+  background-color: rgba(255, 100, 100, 0.2);
+  cursor: default;
+  border-bottom: 3px solid red;
+}
+</style>
+
+<script>
+// Populated by the emulator at runtime
+const data = {
+  "rules": {
+    "files": [{
+      "content": "rules_version \u003d \u00272\u0027;\nservice cloud.firestore {\n  match /databases/{database}/documents {\n\n    match /users/{uid} {\n      allow read, create: if request.auth.uid \u003d\u003d uid;\n    }\n\n    match /users/{uid}/shares/{shareId} {\n      function allowedMoreShares() {\n        return !exists(/databases/$(database)/documents/users/$(uid)) || get(/databases/$(database)/documents/users/$(uid)).data.numShares \u003c 3;\n      }\n\n      allow read: if true;\n      allow delete: if request.auth.uid \u003d\u003d uid;\n      allow create: if request.auth.uid \u003d\u003d uid \u0026\u0026 request.resource.data[\u0027files\u0027].size() \u003c\u003d 5 \u0026\u0026 allowedMoreShares();\n    }\n  }\n}"
+    }]
+  },
+  "report": [{
+    "sourcePosition": {
+      "line": 6,
+      "column": 30,
+      "currentOffset": 144,
+      "endOffset": 166
+    },
+    "values": [{
+      "value": {
+        "undefined": {
+          "sourcePosition": {
+            "line": 6,
+            "column": 30,
+            "currentOffset": 144,
+            "endOffset": 150
+          },
+          "causeMessage": "Null value error."
+        }
+      },
+      "count": 1
+    }, {
+      "value": {
+        "boolValue": true
+      },
+      "count": 1
+    }, {
+      "value": {
+        "boolValue": false
+      },
+      "count": 1
+    }],
+    "children": [{
+      "sourcePosition": {
+        "line": 6,
+        "column": 30,
+        "currentOffset": 144,
+        "endOffset": 159
+      },
+      "values": [{
+        "value": {
+          "undefined": {
+            "sourcePosition": {
+              "line": 6,
+              "column": 30,
+              "currentOffset": 144,
+              "endOffset": 150
+            },
+            "causeMessage": "Null value error."
+          }
+        },
+        "count": 1
+      }, {
+        "value": {
+          "stringValue": "testuser"
+        },
+        "count": 2
+      }],
+      "children": [{
+        "sourcePosition": {
+          "line": 6,
+          "column": 30,
+          "currentOffset": 144,
+          "endOffset": 155
+        },
+        "values": [{
+          "value": {
+            "nullValue": null
+          },
+          "count": 1
+        }, {
+          "value": {
+            "mapValue": {
+              "fields": {
+                "uid": {
+                  "stringValue": "testuser"
+                },
+                "token": {
+                  "mapValue": {
+                    "fields": {
+                      "iss": {
+                        "stringValue": "https://securetoken.google.com/firevault-1a5bc"
+                      },
+                      "aud": {
+                        "stringValue": "firevault-1a5bc"
+                      },
+                      "iat": {
+                        "intValue": "0"
+                      },
+                      "exp": {
+                        "intValue": "3600"
+                      },
+                      "auth_time": {
+                        "intValue": "0"
+                      },
+                      "sub": {
+                        "stringValue": "testuser"
+                      },
+                      "user_id": {
+                        "stringValue": "testuser"
+                      },
+                      "firebase": {
+                        "mapValue": {
+                          "fields": {
+                            "sign_in_provider": {
+                              "stringValue": "custom"
+                            },
+                            "identities": {
+                              "mapValue": {
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "count": 2
+        }],
+        "children": [{
+          "sourcePosition": {
+            "line": 6,
+            "column": 30,
+            "currentOffset": 144,
+            "endOffset": 150
+          },
+          "values": [{
+            "value": {
+              "mapValue": {
+                "fields": {
+                  "time": {
+                    "timestampValue": "2021-07-14T02:15:10.019Z"
+                  },
+                  "auth": {
+                    "nullValue": null
+                  },
+                  "headers": {
+                    "mapValue": {
+                    }
+                  },
+                  "inTransaction": {
+                    "boolValue": true
+                  },
+                  "path": {
+                    "pathValue": {
+                      "segments": [{
+                        "simple": "databases"
+                      }, {
+                        "simple": "(default)"
+                      }, {
+                        "simple": "documents"
+                      }, {
+                        "simple": "users"
+                      }, {
+                        "simple": "alice"
+                      }]
+                    }
+                  },
+                  "transforms": {
+                    "nullValue": null
+                  },
+                  "writeFields": {
+                    "nullValue": null
+                  },
+                  "readFields": {
+                    "nullValue": null
+                  },
+                  "resource": {
+                    "mapValue": {
+                      "fields": {
+                        "data": {
+                          "mapValue": {
+                            "fields": {
+                              "birthday": {
+                                "stringValue": "January 1"
+                              }
+                            }
+                          }
+                        },
+                        "__name__": {
+                          "pathValue": {
+                            "segments": [{
+                              "simple": "databases"
+                            }, {
+                              "simple": "(default)"
+                            }, {
+                              "simple": "documents"
+                            }, {
+                              "simple": "users"
+                            }, {
+                              "simple": "alice"
+                            }]
+                          }
+                        },
+                        "id": {
+                          "stringValue": "alice"
+                        }
+                      }
+                    }
+                  },
+                  "method": {
+                    "stringValue": "create"
+                  }
+                }
+              }
+            },
+            "count": 1
+          }, {
+            "value": {
+              "mapValue": {
+                "fields": {
+                  "time": {
+                    "timestampValue": "2021-07-14T02:15:10.091Z"
+                  },
+                  "auth": {
+                    "mapValue": {
+                      "fields": {
+                        "uid": {
+                          "stringValue": "testuser"
+                        },
+                        "token": {
+                          "mapValue": {
+                            "fields": {
+                              "iss": {
+                                "stringValue": "https://securetoken.google.com/firevault-1a5bc"
+                              },
+                              "aud": {
+                                "stringValue": "firevault-1a5bc"
+                              },
+                              "iat": {
+                                "intValue": "0"
+                              },
+                              "exp": {
+                                "intValue": "3600"
+                              },
+                              "auth_time": {
+                                "intValue": "0"
+                              },
+                              "sub": {
+                                "stringValue": "testuser"
+                              },
+                              "user_id": {
+                                "stringValue": "testuser"
+                              },
+                              "firebase": {
+                                "mapValue": {
+                                  "fields": {
+                                    "sign_in_provider": {
+                                      "stringValue": "custom"
+                                    },
+                                    "identities": {
+                                      "mapValue": {
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "headers": {
+                    "mapValue": {
+                    }
+                  },
+                  "inTransaction": {
+                    "boolValue": true
+                  },
+                  "path": {
+                    "pathValue": {
+                      "segments": [{
+                        "simple": "databases"
+                      }, {
+                        "simple": "(default)"
+                      }, {
+                        "simple": "documents"
+                      }, {
+                        "simple": "users"
+                      }, {
+                        "simple": "testuser"
+                      }]
+                    }
+                  },
+                  "transforms": {
+                    "nullValue": null
+                  },
+                  "writeFields": {
+                    "nullValue": null
+                  },
+                  "readFields": {
+                    "nullValue": null
+                  },
+                  "resource": {
+                    "mapValue": {
+                      "fields": {
+                        "data": {
+                          "mapValue": {
+                            "fields": {
+                              "test": {
+                                "stringValue": "data"
+                              }
+                            }
+                          }
+                        },
+                        "__name__": {
+                          "pathValue": {
+                            "segments": [{
+                              "simple": "databases"
+                            }, {
+                              "simple": "(default)"
+                            }, {
+                              "simple": "documents"
+                            }, {
+                              "simple": "users"
+                            }, {
+                              "simple": "testuser"
+                            }]
+                          }
+                        },
+                        "id": {
+                          "stringValue": "testuser"
+                        }
+                      }
+                    }
+                  },
+                  "method": {
+                    "stringValue": "create"
+                  }
+                }
+              }
+            },
+            "count": 1
+          }, {
+            "value": {
+              "mapValue": {
+                "fields": {
+                  "time": {
+                    "timestampValue": "2021-07-14T02:15:10.100Z"
+                  },
+                  "auth": {
+                    "mapValue": {
+                      "fields": {
+                        "uid": {
+                          "stringValue": "testuser"
+                        },
+                        "token": {
+                          "mapValue": {
+                            "fields": {
+                              "iss": {
+                                "stringValue": "https://securetoken.google.com/firevault-1a5bc"
+                              },
+                              "aud": {
+                                "stringValue": "firevault-1a5bc"
+                              },
+                              "iat": {
+                                "intValue": "0"
+                              },
+                              "exp": {
+                                "intValue": "3600"
+                              },
+                              "auth_time": {
+                                "intValue": "0"
+                              },
+                              "sub": {
+                                "stringValue": "testuser"
+                              },
+                              "user_id": {
+                                "stringValue": "testuser"
+                              },
+                              "firebase": {
+                                "mapValue": {
+                                  "fields": {
+                                    "sign_in_provider": {
+                                      "stringValue": "custom"
+                                    },
+                                    "identities": {
+                                      "mapValue": {
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "headers": {
+                    "mapValue": {
+                    }
+                  },
+                  "inTransaction": {
+                    "boolValue": true
+                  },
+                  "path": {
+                    "pathValue": {
+                      "segments": [{
+                        "simple": "databases"
+                      }, {
+                        "simple": "(default)"
+                      }, {
+                        "simple": "documents"
+                      }, {
+                        "simple": "users"
+                      }, {
+                        "simple": "otheruser"
+                      }]
+                    }
+                  },
+                  "transforms": {
+                    "nullValue": null
+                  },
+                  "writeFields": {
+                    "nullValue": null
+                  },
+                  "readFields": {
+                    "nullValue": null
+                  },
+                  "resource": {
+                    "mapValue": {
+                      "fields": {
+                        "data": {
+                          "mapValue": {
+                            "fields": {
+                              "test": {
+                                "stringValue": "data"
+                              }
+                            }
+                          }
+                        },
+                        "__name__": {
+                          "pathValue": {
+                            "segments": [{
+                              "simple": "databases"
+                            }, {
+                              "simple": "(default)"
+                            }, {
+                              "simple": "documents"
+                            }, {
+                              "simple": "users"
+                            }, {
+                              "simple": "otheruser"
+                            }]
+                          }
+                        },
+                        "id": {
+                          "stringValue": "otheruser"
+                        }
+                      }
+                    }
+                  },
+                  "method": {
+                    "stringValue": "create"
+                  }
+                }
+              }
+            },
+            "count": 1
+          }]
+        }]
+      }]
+    }, {
+      "sourcePosition": {
+        "line": 6,
+        "column": 50,
+        "currentOffset": 164,
+        "endOffset": 166
+      },
+      "values": [{
+        "value": {
+          "stringValue": "alice"
+        },
+        "count": 1
+      }, {
+        "value": {
+          "stringValue": "testuser"
+        },
+        "count": 1
+      }, {
+        "value": {
+          "stringValue": "otheruser"
+        },
+        "count": 1
+      }]
+    }]
+  }, {
+    "sourcePosition": {
+      "line": 11,
+      "column": 16,
+      "currentOffset": 270,
+      "endOffset": 396
+    },
+    "values": [{
+      "value": {
+        "boolValue": true
+      },
+      "count": 2
+    }, {
+      "value": {
+        "boolValue": false
+      },
+      "count": 1
+    }],
+    "children": [{
+      "sourcePosition": {
+        "line": 11,
+        "column": 16,
+        "currentOffset": 270,
+        "endOffset": 321
+      },
+      "values": [{
+        "value": {
+          "boolValue": false
+        },
+        "count": 3
+      }],
+      "children": [{
+        "sourcePosition": {
+          "line": 11,
+          "column": 17,
+          "currentOffset": 271,
+          "endOffset": 321
+        },
+        "values": [{
+          "value": {
+            "boolValue": true
+          },
+          "count": 3
+        }],
+        "children": [{
+          "sourcePosition": {
+            "line": 11,
+            "column": 24,
+            "currentOffset": 278,
+            "endOffset": 321
+          },
+          "values": [{
+            "value": {
+              "pathValue": {
+                "segments": [{
+                  "simple": "databases"
+                }, {
+                  "simple": "(default)"
+                }, {
+                  "simple": "documents"
+                }, {
+                  "simple": "users"
+                }, {
+                  "simple": "testuser"
+                }]
+              }
+            },
+            "count": 3
+          }],
+          "children": [{
+            "sourcePosition": {
+              "line": 11,
+              "column": 37,
+              "currentOffset": 291,
+              "endOffset": 298
+            },
+            "values": [{
+              "value": {
+                "stringValue": "(default)"
+              },
+              "count": 3
+            }]
+          }, {
+            "sourcePosition": {
+              "line": 11,
+              "column": 65,
+              "currentOffset": 319,
+              "endOffset": 321
+            },
+            "values": [{
+              "value": {
+                "stringValue": "testuser"
+              },
+              "count": 3
+            }]
+          }]
+        }]
+      }]
+    }, {
+      "sourcePosition": {
+        "line": 11,
+        "column": 74,
+        "currentOffset": 328,
+        "endOffset": 396
+      },
+      "values": [{
+        "value": {
+          "boolValue": true
+        },
+        "count": 2
+      }, {
+        "value": {
+          "boolValue": false
+        },
+        "count": 1
+      }],
+      "children": [{
+        "sourcePosition": {
+          "line": 11,
+          "column": 74,
+          "currentOffset": 328,
+          "endOffset": 392
+        },
+        "values": [{
+          "value": {
+            "intValue": "0"
+          },
+          "count": 2
+        }, {
+          "value": {
+            "intValue": "3"
+          },
+          "count": 1
+        }],
+        "children": [{
+          "sourcePosition": {
+            "line": 11,
+            "column": 74,
+            "currentOffset": 328,
+            "endOffset": 382
+          },
+          "values": [{
+            "value": {
+              "mapValue": {
+                "fields": {
+                  "numShares": {
+                    "intValue": "0"
+                  }
+                }
+              }
+            },
+            "count": 2
+          }, {
+            "value": {
+              "mapValue": {
+                "fields": {
+                  "numShares": {
+                    "intValue": "3"
+                  }
+                }
+              }
+            },
+            "count": 1
+          }],
+          "children": [{
+            "sourcePosition": {
+              "line": 11,
+              "column": 74,
+              "currentOffset": 328,
+              "endOffset": 375
+            },
+            "values": [{
+              "value": {
+                "mapValue": {
+                  "fields": {
+                    "data": {
+                      "mapValue": {
+                        "fields": {
+                          "numShares": {
+                            "intValue": "0"
+                          }
+                        }
+                      }
+                    },
+                    "__name__": {
+                      "pathValue": {
+                        "segments": [{
+                          "simple": "databases"
+                        }, {
+                          "simple": "(default)"
+                        }, {
+                          "simple": "documents"
+                        }, {
+                          "simple": "users"
+                        }, {
+                          "simple": "testuser"
+                        }]
+                      }
+                    },
+                    "id": {
+                      "stringValue": "testuser"
+                    }
+                  }
+                }
+              },
+              "count": 2
+            }, {
+              "value": {
+                "mapValue": {
+                  "fields": {
+                    "data": {
+                      "mapValue": {
+                        "fields": {
+                          "numShares": {
+                            "intValue": "3"
+                          }
+                        }
+                      }
+                    },
+                    "__name__": {
+                      "pathValue": {
+                        "segments": [{
+                          "simple": "databases"
+                        }, {
+                          "simple": "(default)"
+                        }, {
+                          "simple": "documents"
+                        }, {
+                          "simple": "users"
+                        }, {
+                          "simple": "testuser"
+                        }]
+                      }
+                    },
+                    "id": {
+                      "stringValue": "testuser"
+                    }
+                  }
+                }
+              },
+              "count": 1
+            }],
+            "children": [{
+              "sourcePosition": {
+                "line": 11,
+                "column": 78,
+                "currentOffset": 332,
+                "endOffset": 375
+              },
+              "values": [{
+                "value": {
+                  "pathValue": {
+                    "segments": [{
+                      "simple": "databases"
+                    }, {
+                      "simple": "(default)"
+                    }, {
+                      "simple": "documents"
+                    }, {
+                      "simple": "users"
+                    }, {
+                      "simple": "testuser"
+                    }]
+                  }
+                },
+                "count": 3
+              }],
+              "children": [{
+                "sourcePosition": {
+                  "line": 11,
+                  "column": 91,
+                  "currentOffset": 345,
+                  "endOffset": 352
+                },
+                "values": [{
+                  "value": {
+                    "stringValue": "(default)"
+                  },
+                  "count": 3
+                }]
+              }, {
+                "sourcePosition": {
+                  "line": 11,
+                  "column": 119,
+                  "currentOffset": 373,
+                  "endOffset": 375
+                },
+                "values": [{
+                  "value": {
+                    "stringValue": "testuser"
+                  },
+                  "count": 3
+                }]
+              }]
+            }]
+          }]
+        }]
+      }]
+    }]
+  }, {
+    "sourcePosition": {
+      "line": 15,
+      "column": 24,
+      "currentOffset": 458,
+      "endOffset": 480
+    },
+    "children": [{
+      "sourcePosition": {
+        "line": 15,
+        "column": 24,
+        "currentOffset": 458,
+        "endOffset": 473
+      },
+      "children": [{
+        "sourcePosition": {
+          "line": 15,
+          "column": 24,
+          "currentOffset": 458,
+          "endOffset": 469
+        },
+        "children": [{
+          "sourcePosition": {
+            "line": 15,
+            "column": 24,
+            "currentOffset": 458,
+            "endOffset": 464
+          }
+        }]
+      }]
+    }, {
+      "sourcePosition": {
+        "line": 15,
+        "column": 44,
+        "currentOffset": 478,
+        "endOffset": 480
+      }
+    }]
+  }, {
+    "sourcePosition": {
+      "line": 16,
+      "column": 24,
+      "currentOffset": 506,
+      "endOffset": 595
+    },
+    "values": [{
+      "value": {
+        "boolValue": true
+      },
+      "count": 2
+    }, {
+      "value": {
+        "boolValue": false
+      },
+      "count": 3
+    }],
+    "children": [{
+      "sourcePosition": {
+        "line": 16,
+        "column": 24,
+        "currentOffset": 506,
+        "endOffset": 574
+      },
+      "values": [{
+        "value": {
+          "boolValue": true
+        },
+        "count": 2
+      }, {
+        "value": {
+          "boolValue": false
+        },
+        "count": 2
+      }, {
+        "value": {
+          "undefined": {
+            "sourcePosition": {
+              "line": 16,
+              "column": 51,
+              "currentOffset": 533,
+              "endOffset": 539
+            },
+            "causeMessage": "Property files is undefined on object."
+          }
+        },
+        "count": 1
+      }],
+      "children": [{
+        "sourcePosition": {
+          "line": 16,
+          "column": 24,
+          "currentOffset": 506,
+          "endOffset": 528
+        },
+        "values": [{
+          "value": {
+            "boolValue": true
+          },
+          "count": 4
+        }, {
+          "value": {
+            "boolValue": false
+          },
+          "count": 1
+        }],
+        "children": [{
+          "sourcePosition": {
+            "line": 16,
+            "column": 24,
+            "currentOffset": 506,
+            "endOffset": 521
+          },
+          "values": [{
+            "value": {
+              "stringValue": "testuser"
+            },
+            "count": 5
+          }],
+          "children": [{
+            "sourcePosition": {
+              "line": 16,
+              "column": 24,
+              "currentOffset": 506,
+              "endOffset": 517
+            },
+            "values": [{
+              "value": {
+                "mapValue": {
+                  "fields": {
+                    "uid": {
+                      "stringValue": "testuser"
+                    },
+                    "token": {
+                      "mapValue": {
+                        "fields": {
+                          "iss": {
+                            "stringValue": "https://securetoken.google.com/firevault-1a5bc"
+                          },
+                          "aud": {
+                            "stringValue": "firevault-1a5bc"
+                          },
+                          "iat": {
+                            "intValue": "0"
+                          },
+                          "exp": {
+                            "intValue": "3600"
+                          },
+                          "auth_time": {
+                            "intValue": "0"
+                          },
+                          "sub": {
+                            "stringValue": "testuser"
+                          },
+                          "user_id": {
+                            "stringValue": "testuser"
+                          },
+                          "firebase": {
+                            "mapValue": {
+                              "fields": {
+                                "sign_in_provider": {
+                                  "stringValue": "custom"
+                                },
+                                "identities": {
+                                  "mapValue": {
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "count": 5
+            }],
+            "children": [{
+              "sourcePosition": {
+                "line": 16,
+                "column": 24,
+                "currentOffset": 506,
+                "endOffset": 512
+              },
+              "values": [{
+                "value": {
+                  "mapValue": {
+                    "fields": {
+                      "time": {
+                        "timestampValue": "2021-07-14T02:15:10.530Z"
+                      },
+                      "auth": {
+                        "mapValue": {
+                          "fields": {
+                            "uid": {
+                              "stringValue": "testuser"
+                            },
+                            "token": {
+                              "mapValue": {
+                                "fields": {
+                                  "iss": {
+                                    "stringValue": "https://securetoken.google.com/firevault-1a5bc"
+                                  },
+                                  "aud": {
+                                    "stringValue": "firevault-1a5bc"
+                                  },
+                                  "iat": {
+                                    "intValue": "0"
+                                  },
+                                  "exp": {
+                                    "intValue": "3600"
+                                  },
+                                  "auth_time": {
+                                    "intValue": "0"
+                                  },
+                                  "sub": {
+                                    "stringValue": "testuser"
+                                  },
+                                  "user_id": {
+                                    "stringValue": "testuser"
+                                  },
+                                  "firebase": {
+                                    "mapValue": {
+                                      "fields": {
+                                        "sign_in_provider": {
+                                          "stringValue": "custom"
+                                        },
+                                        "identities": {
+                                          "mapValue": {
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "headers": {
+                        "mapValue": {
+                        }
+                      },
+                      "inTransaction": {
+                        "boolValue": true
+                      },
+                      "path": {
+                        "pathValue": {
+                          "segments": [{
+                            "simple": "databases"
+                          }, {
+                            "simple": "(default)"
+                          }, {
+                            "simple": "documents"
+                          }, {
+                            "simple": "users"
+                          }, {
+                            "simple": "testuser"
+                          }, {
+                            "simple": "shares"
+                          }, {
+                            "simple": "Vz5vBhFNjgceoNXWpbtF"
+                          }]
+                        }
+                      },
+                      "transforms": {
+                        "nullValue": null
+                      },
+                      "writeFields": {
+                        "nullValue": null
+                      },
+                      "readFields": {
+                        "nullValue": null
+                      },
+                      "autoId": {
+                        "boolValue": false
+                      },
+                      "resource": {
+                        "mapValue": {
+                          "fields": {
+                            "data": {
+                              "mapValue": {
+                                "fields": {
+                                  "files": {
+                                    "listValue": {
+                                      "values": [{
+                                        "mapValue": {
+                                          "fields": {
+                                            "path": {
+                                              "stringValue": "a/b"
+                                            },
+                                            "name": {
+                                              "stringValue": "b"
+                                            }
+                                          }
+                                        }
+                                      }]
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "__name__": {
+                              "pathValue": {
+                                "segments": [{
+                                  "simple": "databases"
+                                }, {
+                                  "simple": "(default)"
+                                }, {
+                                  "simple": "documents"
+                                }, {
+                                  "simple": "users"
+                                }, {
+                                  "simple": "testuser"
+                                }, {
+                                  "simple": "shares"
+                                }, {
+                                  "simple": "Vz5vBhFNjgceoNXWpbtF"
+                                }]
+                              }
+                            },
+                            "id": {
+                              "stringValue": "Vz5vBhFNjgceoNXWpbtF"
+                            }
+                          }
+                        }
+                      },
+                      "method": {
+                        "stringValue": "create"
+                      }
+                    }
+                  }
+                },
+                "count": 1
+              }, {
+                "value": {
+                  "mapValue": {
+                    "fields": {
+                      "time": {
+                        "timestampValue": "2021-07-14T02:15:10.538Z"
+                      },
+                      "auth": {
+                        "mapValue": {
+                          "fields": {
+                            "uid": {
+                              "stringValue": "testuser"
+                            },
+                            "token": {
+                              "mapValue": {
+                                "fields": {
+                                  "iss": {
+                                    "stringValue": "https://securetoken.google.com/firevault-1a5bc"
+                                  },
+                                  "aud": {
+                                    "stringValue": "firevault-1a5bc"
+                                  },
+                                  "iat": {
+                                    "intValue": "0"
+                                  },
+                                  "exp": {
+                                    "intValue": "3600"
+                                  },
+                                  "auth_time": {
+                                    "intValue": "0"
+                                  },
+                                  "sub": {
+                                    "stringValue": "testuser"
+                                  },
+                                  "user_id": {
+                                    "stringValue": "testuser"
+                                  },
+                                  "firebase": {
+                                    "mapValue": {
+                                      "fields": {
+                                        "sign_in_provider": {
+                                          "stringValue": "custom"
+                                        },
+                                        "identities": {
+                                          "mapValue": {
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "headers": {
+                        "mapValue": {
+                        }
+                      },
+                      "inTransaction": {
+                        "boolValue": true
+                      },
+                      "path": {
+                        "pathValue": {
+                          "segments": [{
+                            "simple": "databases"
+                          }, {
+                            "simple": "(default)"
+                          }, {
+                            "simple": "documents"
+                          }, {
+                            "simple": "users"
+                          }, {
+                            "simple": "otheruser"
+                          }, {
+                            "simple": "shares"
+                          }, {
+                            "simple": "AJw7mTTiZ113HimCDx9D"
+                          }]
+                        }
+                      },
+                      "transforms": {
+                        "nullValue": null
+                      },
+                      "writeFields": {
+                        "nullValue": null
+                      },
+                      "readFields": {
+                        "nullValue": null
+                      },
+                      "autoId": {
+                        "boolValue": false
+                      },
+                      "resource": {
+                        "mapValue": {
+                          "fields": {
+                            "data": {
+                              "mapValue": {
+                                "fields": {
+                                  "files": {
+                                    "listValue": {
+                                      "values": [{
+                                        "mapValue": {
+                                          "fields": {
+                                            "path": {
+                                              "stringValue": "a/c"
+                                            },
+                                            "name": {
+                                              "stringValue": "c"
+                                            }
+                                          }
+                                        }
+                                      }]
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "__name__": {
+                              "pathValue": {
+                                "segments": [{
+                                  "simple": "databases"
+                                }, {
+                                  "simple": "(default)"
+                                }, {
+                                  "simple": "documents"
+                                }, {
+                                  "simple": "users"
+                                }, {
+                                  "simple": "otheruser"
+                                }, {
+                                  "simple": "shares"
+                                }, {
+                                  "simple": "AJw7mTTiZ113HimCDx9D"
+                                }]
+                              }
+                            },
+                            "id": {
+                              "stringValue": "AJw7mTTiZ113HimCDx9D"
+                            }
+                          }
+                        }
+                      },
+                      "method": {
+                        "stringValue": "create"
+                      }
+                    }
+                  }
+                },
+                "count": 1
+              }, {
+                "value": {
+                  "mapValue": {
+                    "fields": {
+                      "time": {
+                        "timestampValue": "2021-07-14T02:15:10.851Z"
+                      },
+                      "auth": {
+                        "mapValue": {
+                          "fields": {
+                            "uid": {
+                              "stringValue": "testuser"
+                            },
+                            "token": {
+                              "mapValue": {
+                                "fields": {
+                                  "iss": {
+                                    "stringValue": "https://securetoken.google.com/firevault-1a5bc"
+                                  },
+                                  "aud": {
+                                    "stringValue": "firevault-1a5bc"
+                                  },
+                                  "iat": {
+                                    "intValue": "0"
+                                  },
+                                  "exp": {
+                                    "intValue": "3600"
+                                  },
+                                  "auth_time": {
+                                    "intValue": "0"
+                                  },
+                                  "sub": {
+                                    "stringValue": "testuser"
+                                  },
+                                  "user_id": {
+                                    "stringValue": "testuser"
+                                  },
+                                  "firebase": {
+                                    "mapValue": {
+                                      "fields": {
+                                        "sign_in_provider": {
+                                          "stringValue": "custom"
+                                        },
+                                        "identities": {
+                                          "mapValue": {
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "headers": {
+                        "mapValue": {
+                        }
+                      },
+                      "inTransaction": {
+                        "boolValue": true
+                      },
+                      "path": {
+                        "pathValue": {
+                          "segments": [{
+                            "simple": "databases"
+                          }, {
+                            "simple": "(default)"
+                          }, {
+                            "simple": "documents"
+                          }, {
+                            "simple": "users"
+                          }, {
+                            "simple": "testuser"
+                          }, {
+                            "simple": "shares"
+                          }, {
+                            "simple": "Cn9nWASON1Nkxoe6LHKH"
+                          }]
+                        }
+                      },
+                      "transforms": {
+                        "nullValue": null
+                      },
+                      "writeFields": {
+                        "nullValue": null
+                      },
+                      "readFields": {
+                        "nullValue": null
+                      },
+                      "autoId": {
+                        "boolValue": false
+                      },
+                      "resource": {
+                        "mapValue": {
+                          "fields": {
+                            "data": {
+                              "mapValue": {
+                                "fields": {
+                                  "test": {
+                                    "stringValue": "data"
+                                  }
+                                }
+                              }
+                            },
+                            "__name__": {
+                              "pathValue": {
+                                "segments": [{
+                                  "simple": "databases"
+                                }, {
+                                  "simple": "(default)"
+                                }, {
+                                  "simple": "documents"
+                                }, {
+                                  "simple": "users"
+                                }, {
+                                  "simple": "testuser"
+                                }, {
+                                  "simple": "shares"
+                                }, {
+                                  "simple": "Cn9nWASON1Nkxoe6LHKH"
+                                }]
+                              }
+                            },
+                            "id": {
+                              "stringValue": "Cn9nWASON1Nkxoe6LHKH"
+                            }
+                          }
+                        }
+                      },
+                      "method": {
+                        "stringValue": "create"
+                      }
+                    }
+                  }
+                },
+                "count": 1
+              }, {
+                "value": {
+                  "mapValue": {
+                    "fields": {
+                      "time": {
+                        "timestampValue": "2021-07-14T02:15:10.953Z"
+                      },
+                      "auth": {
+                        "mapValue": {
+                          "fields": {
+                            "uid": {
+                              "stringValue": "testuser"
+                            },
+                            "token": {
+                              "mapValue": {
+                                "fields": {
+                                  "iss": {
+                                    "stringValue": "https://securetoken.google.com/firevault-1a5bc"
+                                  },
+                                  "aud": {
+                                    "stringValue": "firevault-1a5bc"
+                                  },
+                                  "iat": {
+                                    "intValue": "0"
+                                  },
+                                  "exp": {
+                                    "intValue": "3600"
+                                  },
+                                  "auth_time": {
+                                    "intValue": "0"
+                                  },
+                                  "sub": {
+                                    "stringValue": "testuser"
+                                  },
+                                  "user_id": {
+                                    "stringValue": "testuser"
+                                  },
+                                  "firebase": {
+                                    "mapValue": {
+                                      "fields": {
+                                        "sign_in_provider": {
+                                          "stringValue": "custom"
+                                        },
+                                        "identities": {
+                                          "mapValue": {
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "headers": {
+                        "mapValue": {
+                        }
+                      },
+                      "inTransaction": {
+                        "boolValue": true
+                      },
+                      "path": {
+                        "pathValue": {
+                          "segments": [{
+                            "simple": "databases"
+                          }, {
+                            "simple": "(default)"
+                          }, {
+                            "simple": "documents"
+                          }, {
+                            "simple": "users"
+                          }, {
+                            "simple": "testuser"
+                          }, {
+                            "simple": "shares"
+                          }, {
+                            "simple": "NNAVZAk6Dq7AGVanvJWX"
+                          }]
+                        }
+                      },
+                      "transforms": {
+                        "nullValue": null
+                      },
+                      "writeFields": {
+                        "nullValue": null
+                      },
+                      "readFields": {
+                        "nullValue": null
+                      },
+                      "autoId": {
+                        "boolValue": false
+                      },
+                      "resource": {
+                        "mapValue": {
+                          "fields": {
+                            "data": {
+                              "mapValue": {
+                                "fields": {
+                                  "files": {
+                                    "listValue": {
+                                      "values": [{
+                                        "mapValue": {
+                                          "fields": {
+                                            "path": {
+                                              "stringValue": "a/b"
+                                            },
+                                            "name": {
+                                              "stringValue": "b"
+                                            }
+                                          }
+                                        }
+                                      }, {
+                                        "mapValue": {
+                                          "fields": {
+                                            "path": {
+                                              "stringValue": "a/c"
+                                            },
+                                            "name": {
+                                              "stringValue": "c"
+                                            }
+                                          }
+                                        }
+                                      }, {
+                                        "mapValue": {
+                                          "fields": {
+                                            "path": {
+                                              "stringValue": "a/d"
+                                            },
+                                            "name": {
+                                              "stringValue": "d"
+                                            }
+                                          }
+                                        }
+                                      }, {
+                                        "mapValue": {
+                                          "fields": {
+                                            "path": {
+                                              "stringValue": "a/e"
+                                            },
+                                            "name": {
+                                              "stringValue": "e"
+                                            }
+                                          }
+                                        }
+                                      }, {
+                                        "mapValue": {
+                                          "fields": {
+                                            "path": {
+                                              "stringValue": "a/f"
+                                            },
+                                            "name": {
+                                              "stringValue": "f"
+                                            }
+                                          }
+                                        }
+                                      }]
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "__name__": {
+                              "pathValue": {
+                                "segments": [{
+                                  "simple": "databases"
+                                }, {
+                                  "simple": "(default)"
+                                }, {
+                                  "simple": "documents"
+                                }, {
+                                  "simple": "users"
+                                }, {
+                                  "simple": "testuser"
+                                }, {
+                                  "simple": "shares"
+                                }, {
+                                  "simple": "NNAVZAk6Dq7AGVanvJWX"
+                                }]
+                              }
+                            },
+                            "id": {
+                              "stringValue": "NNAVZAk6Dq7AGVanvJWX"
+                            }
+                          }
+                        }
+                      },
+                      "method": {
+                        "stringValue": "create"
+                      }
+                    }
+                  }
+                },
+                "count": 1
+              }, {
+                "value": {
+                  "mapValue": {
+                    "fields": {
+                      "time": {
+                        "timestampValue": "2021-07-14T02:15:10.962Z"
+                      },
+                      "auth": {
+                        "mapValue": {
+                          "fields": {
+                            "uid": {
+                              "stringValue": "testuser"
+                            },
+                            "token": {
+                              "mapValue": {
+                                "fields": {
+                                  "iss": {
+                                    "stringValue": "https://securetoken.google.com/firevault-1a5bc"
+                                  },
+                                  "aud": {
+                                    "stringValue": "firevault-1a5bc"
+                                  },
+                                  "iat": {
+                                    "intValue": "0"
+                                  },
+                                  "exp": {
+                                    "intValue": "3600"
+                                  },
+                                  "auth_time": {
+                                    "intValue": "0"
+                                  },
+                                  "sub": {
+                                    "stringValue": "testuser"
+                                  },
+                                  "user_id": {
+                                    "stringValue": "testuser"
+                                  },
+                                  "firebase": {
+                                    "mapValue": {
+                                      "fields": {
+                                        "sign_in_provider": {
+                                          "stringValue": "custom"
+                                        },
+                                        "identities": {
+                                          "mapValue": {
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "headers": {
+                        "mapValue": {
+                        }
+                      },
+                      "inTransaction": {
+                        "boolValue": true
+                      },
+                      "path": {
+                        "pathValue": {
+                          "segments": [{
+                            "simple": "databases"
+                          }, {
+                            "simple": "(default)"
+                          }, {
+                            "simple": "documents"
+                          }, {
+                            "simple": "users"
+                          }, {
+                            "simple": "testuser"
+                          }, {
+                            "simple": "shares"
+                          }, {
+                            "simple": "eVvrdGTxBe5IDzZLdimu"
+                          }]
+                        }
+                      },
+                      "transforms": {
+                        "nullValue": null
+                      },
+                      "writeFields": {
+                        "nullValue": null
+                      },
+                      "readFields": {
+                        "nullValue": null
+                      },
+                      "autoId": {
+                        "boolValue": false
+                      },
+                      "resource": {
+                        "mapValue": {
+                          "fields": {
+                            "data": {
+                              "mapValue": {
+                                "fields": {
+                                  "files": {
+                                    "listValue": {
+                                      "values": [{
+                                        "mapValue": {
+                                          "fields": {
+                                            "path": {
+                                              "stringValue": "a/b"
+                                            },
+                                            "name": {
+                                              "stringValue": "b"
+                                            }
+                                          }
+                                        }
+                                      }, {
+                                        "mapValue": {
+                                          "fields": {
+                                            "path": {
+                                              "stringValue": "a/c"
+                                            },
+                                            "name": {
+                                              "stringValue": "c"
+                                            }
+                                          }
+                                        }
+                                      }, {
+                                        "mapValue": {
+                                          "fields": {
+                                            "path": {
+                                              "stringValue": "a/d"
+                                            },
+                                            "name": {
+                                              "stringValue": "d"
+                                            }
+                                          }
+                                        }
+                                      }, {
+                                        "mapValue": {
+                                          "fields": {
+                                            "path": {
+                                              "stringValue": "a/e"
+                                            },
+                                            "name": {
+                                              "stringValue": "e"
+                                            }
+                                          }
+                                        }
+                                      }, {
+                                        "mapValue": {
+                                          "fields": {
+                                            "path": {
+                                              "stringValue": "a/f"
+                                            },
+                                            "name": {
+                                              "stringValue": "f"
+                                            }
+                                          }
+                                        }
+                                      }, {
+                                        "mapValue": {
+                                          "fields": {
+                                            "path": {
+                                              "stringValue": "a/g"
+                                            },
+                                            "name": {
+                                              "stringValue": "g"
+                                            }
+                                          }
+                                        }
+                                      }]
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "__name__": {
+                              "pathValue": {
+                                "segments": [{
+                                  "simple": "databases"
+                                }, {
+                                  "simple": "(default)"
+                                }, {
+                                  "simple": "documents"
+                                }, {
+                                  "simple": "users"
+                                }, {
+                                  "simple": "testuser"
+                                }, {
+                                  "simple": "shares"
+                                }, {
+                                  "simple": "eVvrdGTxBe5IDzZLdimu"
+                                }]
+                              }
+                            },
+                            "id": {
+                              "stringValue": "eVvrdGTxBe5IDzZLdimu"
+                            }
+                          }
+                        }
+                      },
+                      "method": {
+                        "stringValue": "create"
+                      }
+                    }
+                  }
+                },
+                "count": 1
+              }]
+            }]
+          }]
+        }, {
+          "sourcePosition": {
+            "line": 16,
+            "column": 44,
+            "currentOffset": 526,
+            "endOffset": 528
+          },
+          "values": [{
+            "value": {
+              "stringValue": "testuser"
+            },
+            "count": 4
+          }, {
+            "value": {
+              "stringValue": "otheruser"
+            },
+            "count": 1
+          }]
+        }]
+      }, {
+        "sourcePosition": {
+          "line": 16,
+          "column": 51,
+          "currentOffset": 533,
+          "endOffset": 574
+        },
+        "values": [{
+          "value": {
+            "boolValue": true
+          },
+          "count": 2
+        }, {
+          "value": {
+          },
+          "count": 1
+        }, {
+          "value": {
+            "undefined": {
+              "sourcePosition": {
+                "line": 16,
+                "column": 51,
+                "currentOffset": 533,
+                "endOffset": 539
+              },
+              "causeMessage": "Property files is undefined on object."
+            }
+          },
+          "count": 1
+        }, {
+          "value": {
+            "boolValue": false
+          },
+          "count": 1
+        }],
+        "children": [{
+          "sourcePosition": {
+            "line": 16,
+            "column": 51,
+            "currentOffset": 533,
+            "endOffset": 567
+          },
+          "values": [{
+            "value": {
+              "intValue": "1"
+            },
+            "count": 1
+          }, {
+            "value": {
+            },
+            "count": 1
+          }, {
+            "value": {
+              "undefined": {
+                "sourcePosition": {
+                  "line": 16,
+                  "column": 51,
+                  "currentOffset": 533,
+                  "endOffset": 539
+                },
+                "causeMessage": "Property files is undefined on object."
+              }
+            },
+            "count": 1
+          }, {
+            "value": {
+              "intValue": "5"
+            },
+            "count": 1
+          }, {
+            "value": {
+              "intValue": "6"
+            },
+            "count": 1
+          }],
+          "children": [{
+            "sourcePosition": {
+              "line": 16,
+              "column": 51,
+              "currentOffset": 533,
+              "endOffset": 561
+            },
+            "values": [{
+              "value": {
+                "listValue": {
+                  "values": [{
+                    "mapValue": {
+                      "fields": {
+                        "path": {
+                          "stringValue": "a/b"
+                        },
+                        "name": {
+                          "stringValue": "b"
+                        }
+                      }
+                    }
+                  }]
+                }
+              },
+              "count": 1
+            }, {
+              "value": {
+              },
+              "count": 1
+            }, {
+              "value": {
+                "undefined": {
+                  "sourcePosition": {
+                    "line": 16,
+                    "column": 51,
+                    "currentOffset": 533,
+                    "endOffset": 539
+                  },
+                  "causeMessage": "Property files is undefined on object."
+                }
+              },
+              "count": 1
+            }, {
+              "value": {
+                "listValue": {
+                  "values": [{
+                    "mapValue": {
+                      "fields": {
+                        "path": {
+                          "stringValue": "a/b"
+                        },
+                        "name": {
+                          "stringValue": "b"
+                        }
+                      }
+                    }
+                  }, {
+                    "mapValue": {
+                      "fields": {
+                        "path": {
+                          "stringValue": "a/c"
+                        },
+                        "name": {
+                          "stringValue": "c"
+                        }
+                      }
+                    }
+                  }, {
+                    "mapValue": {
+                      "fields": {
+                        "path": {
+                          "stringValue": "a/d"
+                        },
+                        "name": {
+                          "stringValue": "d"
+                        }
+                      }
+                    }
+                  }, {
+                    "mapValue": {
+                      "fields": {
+                        "path": {
+                          "stringValue": "a/e"
+                        },
+                        "name": {
+                          "stringValue": "e"
+                        }
+                      }
+                    }
+                  }, {
+                    "mapValue": {
+                      "fields": {
+                        "path": {
+                          "stringValue": "a/f"
+                        },
+                        "name": {
+                          "stringValue": "f"
+                        }
+                      }
+                    }
+                  }]
+                }
+              },
+              "count": 1
+            }, {
+              "value": {
+                "listValue": {
+                  "values": [{
+                    "mapValue": {
+                      "fields": {
+                        "path": {
+                          "stringValue": "a/b"
+                        },
+                        "name": {
+                          "stringValue": "b"
+                        }
+                      }
+                    }
+                  }, {
+                    "mapValue": {
+                      "fields": {
+                        "path": {
+                          "stringValue": "a/c"
+                        },
+                        "name": {
+                          "stringValue": "c"
+                        }
+                      }
+                    }
+                  }, {
+                    "mapValue": {
+                      "fields": {
+                        "path": {
+                          "stringValue": "a/d"
+                        },
+                        "name": {
+                          "stringValue": "d"
+                        }
+                      }
+                    }
+                  }, {
+                    "mapValue": {
+                      "fields": {
+                        "path": {
+                          "stringValue": "a/e"
+                        },
+                        "name": {
+                          "stringValue": "e"
+                        }
+                      }
+                    }
+                  }, {
+                    "mapValue": {
+                      "fields": {
+                        "path": {
+                          "stringValue": "a/f"
+                        },
+                        "name": {
+                          "stringValue": "f"
+                        }
+                      }
+                    }
+                  }, {
+                    "mapValue": {
+                      "fields": {
+                        "path": {
+                          "stringValue": "a/g"
+                        },
+                        "name": {
+                          "stringValue": "g"
+                        }
+                      }
+                    }
+                  }]
+                }
+              },
+              "count": 1
+            }],
+            "children": [{
+              "sourcePosition": {
+                "line": 16,
+                "column": 51,
+                "currentOffset": 533,
+                "endOffset": 553
+              },
+              "values": [{
+                "value": {
+                  "mapValue": {
+                    "fields": {
+                      "files": {
+                        "listValue": {
+                          "values": [{
+                            "mapValue": {
+                              "fields": {
+                                "path": {
+                                  "stringValue": "a/b"
+                                },
+                                "name": {
+                                  "stringValue": "b"
+                                }
+                              }
+                            }
+                          }]
+                        }
+                      }
+                    }
+                  }
+                },
+                "count": 1
+              }, {
+                "value": {
+                },
+                "count": 1
+              }, {
+                "value": {
+                  "mapValue": {
+                    "fields": {
+                      "test": {
+                        "stringValue": "data"
+                      }
+                    }
+                  }
+                },
+                "count": 1
+              }, {
+                "value": {
+                  "mapValue": {
+                    "fields": {
+                      "files": {
+                        "listValue": {
+                          "values": [{
+                            "mapValue": {
+                              "fields": {
+                                "path": {
+                                  "stringValue": "a/b"
+                                },
+                                "name": {
+                                  "stringValue": "b"
+                                }
+                              }
+                            }
+                          }, {
+                            "mapValue": {
+                              "fields": {
+                                "path": {
+                                  "stringValue": "a/c"
+                                },
+                                "name": {
+                                  "stringValue": "c"
+                                }
+                              }
+                            }
+                          }, {
+                            "mapValue": {
+                              "fields": {
+                                "path": {
+                                  "stringValue": "a/d"
+                                },
+                                "name": {
+                                  "stringValue": "d"
+                                }
+                              }
+                            }
+                          }, {
+                            "mapValue": {
+                              "fields": {
+                                "path": {
+                                  "stringValue": "a/e"
+                                },
+                                "name": {
+                                  "stringValue": "e"
+                                }
+                              }
+                            }
+                          }, {
+                            "mapValue": {
+                              "fields": {
+                                "path": {
+                                  "stringValue": "a/f"
+                                },
+                                "name": {
+                                  "stringValue": "f"
+                                }
+                              }
+                            }
+                          }]
+                        }
+                      }
+                    }
+                  }
+                },
+                "count": 1
+              }, {
+                "value": {
+                  "mapValue": {
+                    "fields": {
+                      "files": {
+                        "listValue": {
+                          "values": [{
+                            "mapValue": {
+                              "fields": {
+                                "path": {
+                                  "stringValue": "a/b"
+                                },
+                                "name": {
+                                  "stringValue": "b"
+                                }
+                              }
+                            }
+                          }, {
+                            "mapValue": {
+                              "fields": {
+                                "path": {
+                                  "stringValue": "a/c"
+                                },
+                                "name": {
+                                  "stringValue": "c"
+                                }
+                              }
+                            }
+                          }, {
+                            "mapValue": {
+                              "fields": {
+                                "path": {
+                                  "stringValue": "a/d"
+                                },
+                                "name": {
+                                  "stringValue": "d"
+                                }
+                              }
+                            }
+                          }, {
+                            "mapValue": {
+                              "fields": {
+                                "path": {
+                                  "stringValue": "a/e"
+                                },
+                                "name": {
+                                  "stringValue": "e"
+                                }
+                              }
+                            }
+                          }, {
+                            "mapValue": {
+                              "fields": {
+                                "path": {
+                                  "stringValue": "a/f"
+                                },
+                                "name": {
+                                  "stringValue": "f"
+                                }
+                              }
+                            }
+                          }, {
+                            "mapValue": {
+                              "fields": {
+                                "path": {
+                                  "stringValue": "a/g"
+                                },
+                                "name": {
+                                  "stringValue": "g"
+                                }
+                              }
+                            }
+                          }]
+                        }
+                      }
+                    }
+                  }
+                },
+                "count": 1
+              }],
+              "children": [{
+                "sourcePosition": {
+                  "line": 16,
+                  "column": 51,
+                  "currentOffset": 533,
+                  "endOffset": 548
+                },
+                "values": [{
+                  "value": {
+                    "mapValue": {
+                      "fields": {
+                        "data": {
+                          "mapValue": {
+                            "fields": {
+                              "files": {
+                                "listValue": {
+                                  "values": [{
+                                    "mapValue": {
+                                      "fields": {
+                                        "path": {
+                                          "stringValue": "a/b"
+                                        },
+                                        "name": {
+                                          "stringValue": "b"
+                                        }
+                                      }
+                                    }
+                                  }]
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "__name__": {
+                          "pathValue": {
+                            "segments": [{
+                              "simple": "databases"
+                            }, {
+                              "simple": "(default)"
+                            }, {
+                              "simple": "documents"
+                            }, {
+                              "simple": "users"
+                            }, {
+                              "simple": "testuser"
+                            }, {
+                              "simple": "shares"
+                            }, {
+                              "simple": "Vz5vBhFNjgceoNXWpbtF"
+                            }]
+                          }
+                        },
+                        "id": {
+                          "stringValue": "Vz5vBhFNjgceoNXWpbtF"
+                        }
+                      }
+                    }
+                  },
+                  "count": 1
+                }, {
+                  "value": {
+                  },
+                  "count": 1
+                }, {
+                  "value": {
+                    "mapValue": {
+                      "fields": {
+                        "data": {
+                          "mapValue": {
+                            "fields": {
+                              "test": {
+                                "stringValue": "data"
+                              }
+                            }
+                          }
+                        },
+                        "__name__": {
+                          "pathValue": {
+                            "segments": [{
+                              "simple": "databases"
+                            }, {
+                              "simple": "(default)"
+                            }, {
+                              "simple": "documents"
+                            }, {
+                              "simple": "users"
+                            }, {
+                              "simple": "testuser"
+                            }, {
+                              "simple": "shares"
+                            }, {
+                              "simple": "Cn9nWASON1Nkxoe6LHKH"
+                            }]
+                          }
+                        },
+                        "id": {
+                          "stringValue": "Cn9nWASON1Nkxoe6LHKH"
+                        }
+                      }
+                    }
+                  },
+                  "count": 1
+                }, {
+                  "value": {
+                    "mapValue": {
+                      "fields": {
+                        "data": {
+                          "mapValue": {
+                            "fields": {
+                              "files": {
+                                "listValue": {
+                                  "values": [{
+                                    "mapValue": {
+                                      "fields": {
+                                        "path": {
+                                          "stringValue": "a/b"
+                                        },
+                                        "name": {
+                                          "stringValue": "b"
+                                        }
+                                      }
+                                    }
+                                  }, {
+                                    "mapValue": {
+                                      "fields": {
+                                        "path": {
+                                          "stringValue": "a/c"
+                                        },
+                                        "name": {
+                                          "stringValue": "c"
+                                        }
+                                      }
+                                    }
+                                  }, {
+                                    "mapValue": {
+                                      "fields": {
+                                        "path": {
+                                          "stringValue": "a/d"
+                                        },
+                                        "name": {
+                                          "stringValue": "d"
+                                        }
+                                      }
+                                    }
+                                  }, {
+                                    "mapValue": {
+                                      "fields": {
+                                        "path": {
+                                          "stringValue": "a/e"
+                                        },
+                                        "name": {
+                                          "stringValue": "e"
+                                        }
+                                      }
+                                    }
+                                  }, {
+                                    "mapValue": {
+                                      "fields": {
+                                        "path": {
+                                          "stringValue": "a/f"
+                                        },
+                                        "name": {
+                                          "stringValue": "f"
+                                        }
+                                      }
+                                    }
+                                  }]
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "__name__": {
+                          "pathValue": {
+                            "segments": [{
+                              "simple": "databases"
+                            }, {
+                              "simple": "(default)"
+                            }, {
+                              "simple": "documents"
+                            }, {
+                              "simple": "users"
+                            }, {
+                              "simple": "testuser"
+                            }, {
+                              "simple": "shares"
+                            }, {
+                              "simple": "NNAVZAk6Dq7AGVanvJWX"
+                            }]
+                          }
+                        },
+                        "id": {
+                          "stringValue": "NNAVZAk6Dq7AGVanvJWX"
+                        }
+                      }
+                    }
+                  },
+                  "count": 1
+                }, {
+                  "value": {
+                    "mapValue": {
+                      "fields": {
+                        "data": {
+                          "mapValue": {
+                            "fields": {
+                              "files": {
+                                "listValue": {
+                                  "values": [{
+                                    "mapValue": {
+                                      "fields": {
+                                        "path": {
+                                          "stringValue": "a/b"
+                                        },
+                                        "name": {
+                                          "stringValue": "b"
+                                        }
+                                      }
+                                    }
+                                  }, {
+                                    "mapValue": {
+                                      "fields": {
+                                        "path": {
+                                          "stringValue": "a/c"
+                                        },
+                                        "name": {
+                                          "stringValue": "c"
+                                        }
+                                      }
+                                    }
+                                  }, {
+                                    "mapValue": {
+                                      "fields": {
+                                        "path": {
+                                          "stringValue": "a/d"
+                                        },
+                                        "name": {
+                                          "stringValue": "d"
+                                        }
+                                      }
+                                    }
+                                  }, {
+                                    "mapValue": {
+                                      "fields": {
+                                        "path": {
+                                          "stringValue": "a/e"
+                                        },
+                                        "name": {
+                                          "stringValue": "e"
+                                        }
+                                      }
+                                    }
+                                  }, {
+                                    "mapValue": {
+                                      "fields": {
+                                        "path": {
+                                          "stringValue": "a/f"
+                                        },
+                                        "name": {
+                                          "stringValue": "f"
+                                        }
+                                      }
+                                    }
+                                  }, {
+                                    "mapValue": {
+                                      "fields": {
+                                        "path": {
+                                          "stringValue": "a/g"
+                                        },
+                                        "name": {
+                                          "stringValue": "g"
+                                        }
+                                      }
+                                    }
+                                  }]
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "__name__": {
+                          "pathValue": {
+                            "segments": [{
+                              "simple": "databases"
+                            }, {
+                              "simple": "(default)"
+                            }, {
+                              "simple": "documents"
+                            }, {
+                              "simple": "users"
+                            }, {
+                              "simple": "testuser"
+                            }, {
+                              "simple": "shares"
+                            }, {
+                              "simple": "eVvrdGTxBe5IDzZLdimu"
+                            }]
+                          }
+                        },
+                        "id": {
+                          "stringValue": "eVvrdGTxBe5IDzZLdimu"
+                        }
+                      }
+                    }
+                  },
+                  "count": 1
+                }],
+                "children": [{
+                  "sourcePosition": {
+                    "line": 16,
+                    "column": 51,
+                    "currentOffset": 533,
+                    "endOffset": 539
+                  },
+                  "values": [{
+                    "value": {
+                      "mapValue": {
+                        "fields": {
+                          "time": {
+                            "timestampValue": "2021-07-14T02:15:10.530Z"
+                          },
+                          "auth": {
+                            "mapValue": {
+                              "fields": {
+                                "uid": {
+                                  "stringValue": "testuser"
+                                },
+                                "token": {
+                                  "mapValue": {
+                                    "fields": {
+                                      "iss": {
+                                        "stringValue": "https://securetoken.google.com/firevault-1a5bc"
+                                      },
+                                      "aud": {
+                                        "stringValue": "firevault-1a5bc"
+                                      },
+                                      "iat": {
+                                        "intValue": "0"
+                                      },
+                                      "exp": {
+                                        "intValue": "3600"
+                                      },
+                                      "auth_time": {
+                                        "intValue": "0"
+                                      },
+                                      "sub": {
+                                        "stringValue": "testuser"
+                                      },
+                                      "user_id": {
+                                        "stringValue": "testuser"
+                                      },
+                                      "firebase": {
+                                        "mapValue": {
+                                          "fields": {
+                                            "sign_in_provider": {
+                                              "stringValue": "custom"
+                                            },
+                                            "identities": {
+                                              "mapValue": {
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "headers": {
+                            "mapValue": {
+                            }
+                          },
+                          "inTransaction": {
+                            "boolValue": true
+                          },
+                          "path": {
+                            "pathValue": {
+                              "segments": [{
+                                "simple": "databases"
+                              }, {
+                                "simple": "(default)"
+                              }, {
+                                "simple": "documents"
+                              }, {
+                                "simple": "users"
+                              }, {
+                                "simple": "testuser"
+                              }, {
+                                "simple": "shares"
+                              }, {
+                                "simple": "Vz5vBhFNjgceoNXWpbtF"
+                              }]
+                            }
+                          },
+                          "transforms": {
+                            "nullValue": null
+                          },
+                          "writeFields": {
+                            "nullValue": null
+                          },
+                          "readFields": {
+                            "nullValue": null
+                          },
+                          "autoId": {
+                            "boolValue": false
+                          },
+                          "resource": {
+                            "mapValue": {
+                              "fields": {
+                                "data": {
+                                  "mapValue": {
+                                    "fields": {
+                                      "files": {
+                                        "listValue": {
+                                          "values": [{
+                                            "mapValue": {
+                                              "fields": {
+                                                "path": {
+                                                  "stringValue": "a/b"
+                                                },
+                                                "name": {
+                                                  "stringValue": "b"
+                                                }
+                                              }
+                                            }
+                                          }]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "__name__": {
+                                  "pathValue": {
+                                    "segments": [{
+                                      "simple": "databases"
+                                    }, {
+                                      "simple": "(default)"
+                                    }, {
+                                      "simple": "documents"
+                                    }, {
+                                      "simple": "users"
+                                    }, {
+                                      "simple": "testuser"
+                                    }, {
+                                      "simple": "shares"
+                                    }, {
+                                      "simple": "Vz5vBhFNjgceoNXWpbtF"
+                                    }]
+                                  }
+                                },
+                                "id": {
+                                  "stringValue": "Vz5vBhFNjgceoNXWpbtF"
+                                }
+                              }
+                            }
+                          },
+                          "method": {
+                            "stringValue": "create"
+                          }
+                        }
+                      }
+                    },
+                    "count": 1
+                  }, {
+                    "value": {
+                    },
+                    "count": 1
+                  }, {
+                    "value": {
+                      "mapValue": {
+                        "fields": {
+                          "time": {
+                            "timestampValue": "2021-07-14T02:15:10.851Z"
+                          },
+                          "auth": {
+                            "mapValue": {
+                              "fields": {
+                                "uid": {
+                                  "stringValue": "testuser"
+                                },
+                                "token": {
+                                  "mapValue": {
+                                    "fields": {
+                                      "iss": {
+                                        "stringValue": "https://securetoken.google.com/firevault-1a5bc"
+                                      },
+                                      "aud": {
+                                        "stringValue": "firevault-1a5bc"
+                                      },
+                                      "iat": {
+                                        "intValue": "0"
+                                      },
+                                      "exp": {
+                                        "intValue": "3600"
+                                      },
+                                      "auth_time": {
+                                        "intValue": "0"
+                                      },
+                                      "sub": {
+                                        "stringValue": "testuser"
+                                      },
+                                      "user_id": {
+                                        "stringValue": "testuser"
+                                      },
+                                      "firebase": {
+                                        "mapValue": {
+                                          "fields": {
+                                            "sign_in_provider": {
+                                              "stringValue": "custom"
+                                            },
+                                            "identities": {
+                                              "mapValue": {
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "headers": {
+                            "mapValue": {
+                            }
+                          },
+                          "inTransaction": {
+                            "boolValue": true
+                          },
+                          "path": {
+                            "pathValue": {
+                              "segments": [{
+                                "simple": "databases"
+                              }, {
+                                "simple": "(default)"
+                              }, {
+                                "simple": "documents"
+                              }, {
+                                "simple": "users"
+                              }, {
+                                "simple": "testuser"
+                              }, {
+                                "simple": "shares"
+                              }, {
+                                "simple": "Cn9nWASON1Nkxoe6LHKH"
+                              }]
+                            }
+                          },
+                          "transforms": {
+                            "nullValue": null
+                          },
+                          "writeFields": {
+                            "nullValue": null
+                          },
+                          "readFields": {
+                            "nullValue": null
+                          },
+                          "autoId": {
+                            "boolValue": false
+                          },
+                          "resource": {
+                            "mapValue": {
+                              "fields": {
+                                "data": {
+                                  "mapValue": {
+                                    "fields": {
+                                      "test": {
+                                        "stringValue": "data"
+                                      }
+                                    }
+                                  }
+                                },
+                                "__name__": {
+                                  "pathValue": {
+                                    "segments": [{
+                                      "simple": "databases"
+                                    }, {
+                                      "simple": "(default)"
+                                    }, {
+                                      "simple": "documents"
+                                    }, {
+                                      "simple": "users"
+                                    }, {
+                                      "simple": "testuser"
+                                    }, {
+                                      "simple": "shares"
+                                    }, {
+                                      "simple": "Cn9nWASON1Nkxoe6LHKH"
+                                    }]
+                                  }
+                                },
+                                "id": {
+                                  "stringValue": "Cn9nWASON1Nkxoe6LHKH"
+                                }
+                              }
+                            }
+                          },
+                          "method": {
+                            "stringValue": "create"
+                          }
+                        }
+                      }
+                    },
+                    "count": 1
+                  }, {
+                    "value": {
+                      "mapValue": {
+                        "fields": {
+                          "time": {
+                            "timestampValue": "2021-07-14T02:15:10.953Z"
+                          },
+                          "auth": {
+                            "mapValue": {
+                              "fields": {
+                                "uid": {
+                                  "stringValue": "testuser"
+                                },
+                                "token": {
+                                  "mapValue": {
+                                    "fields": {
+                                      "iss": {
+                                        "stringValue": "https://securetoken.google.com/firevault-1a5bc"
+                                      },
+                                      "aud": {
+                                        "stringValue": "firevault-1a5bc"
+                                      },
+                                      "iat": {
+                                        "intValue": "0"
+                                      },
+                                      "exp": {
+                                        "intValue": "3600"
+                                      },
+                                      "auth_time": {
+                                        "intValue": "0"
+                                      },
+                                      "sub": {
+                                        "stringValue": "testuser"
+                                      },
+                                      "user_id": {
+                                        "stringValue": "testuser"
+                                      },
+                                      "firebase": {
+                                        "mapValue": {
+                                          "fields": {
+                                            "sign_in_provider": {
+                                              "stringValue": "custom"
+                                            },
+                                            "identities": {
+                                              "mapValue": {
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "headers": {
+                            "mapValue": {
+                            }
+                          },
+                          "inTransaction": {
+                            "boolValue": true
+                          },
+                          "path": {
+                            "pathValue": {
+                              "segments": [{
+                                "simple": "databases"
+                              }, {
+                                "simple": "(default)"
+                              }, {
+                                "simple": "documents"
+                              }, {
+                                "simple": "users"
+                              }, {
+                                "simple": "testuser"
+                              }, {
+                                "simple": "shares"
+                              }, {
+                                "simple": "NNAVZAk6Dq7AGVanvJWX"
+                              }]
+                            }
+                          },
+                          "transforms": {
+                            "nullValue": null
+                          },
+                          "writeFields": {
+                            "nullValue": null
+                          },
+                          "readFields": {
+                            "nullValue": null
+                          },
+                          "autoId": {
+                            "boolValue": false
+                          },
+                          "resource": {
+                            "mapValue": {
+                              "fields": {
+                                "data": {
+                                  "mapValue": {
+                                    "fields": {
+                                      "files": {
+                                        "listValue": {
+                                          "values": [{
+                                            "mapValue": {
+                                              "fields": {
+                                                "path": {
+                                                  "stringValue": "a/b"
+                                                },
+                                                "name": {
+                                                  "stringValue": "b"
+                                                }
+                                              }
+                                            }
+                                          }, {
+                                            "mapValue": {
+                                              "fields": {
+                                                "path": {
+                                                  "stringValue": "a/c"
+                                                },
+                                                "name": {
+                                                  "stringValue": "c"
+                                                }
+                                              }
+                                            }
+                                          }, {
+                                            "mapValue": {
+                                              "fields": {
+                                                "path": {
+                                                  "stringValue": "a/d"
+                                                },
+                                                "name": {
+                                                  "stringValue": "d"
+                                                }
+                                              }
+                                            }
+                                          }, {
+                                            "mapValue": {
+                                              "fields": {
+                                                "path": {
+                                                  "stringValue": "a/e"
+                                                },
+                                                "name": {
+                                                  "stringValue": "e"
+                                                }
+                                              }
+                                            }
+                                          }, {
+                                            "mapValue": {
+                                              "fields": {
+                                                "path": {
+                                                  "stringValue": "a/f"
+                                                },
+                                                "name": {
+                                                  "stringValue": "f"
+                                                }
+                                              }
+                                            }
+                                          }]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "__name__": {
+                                  "pathValue": {
+                                    "segments": [{
+                                      "simple": "databases"
+                                    }, {
+                                      "simple": "(default)"
+                                    }, {
+                                      "simple": "documents"
+                                    }, {
+                                      "simple": "users"
+                                    }, {
+                                      "simple": "testuser"
+                                    }, {
+                                      "simple": "shares"
+                                    }, {
+                                      "simple": "NNAVZAk6Dq7AGVanvJWX"
+                                    }]
+                                  }
+                                },
+                                "id": {
+                                  "stringValue": "NNAVZAk6Dq7AGVanvJWX"
+                                }
+                              }
+                            }
+                          },
+                          "method": {
+                            "stringValue": "create"
+                          }
+                        }
+                      }
+                    },
+                    "count": 1
+                  }, {
+                    "value": {
+                      "mapValue": {
+                        "fields": {
+                          "time": {
+                            "timestampValue": "2021-07-14T02:15:10.962Z"
+                          },
+                          "auth": {
+                            "mapValue": {
+                              "fields": {
+                                "uid": {
+                                  "stringValue": "testuser"
+                                },
+                                "token": {
+                                  "mapValue": {
+                                    "fields": {
+                                      "iss": {
+                                        "stringValue": "https://securetoken.google.com/firevault-1a5bc"
+                                      },
+                                      "aud": {
+                                        "stringValue": "firevault-1a5bc"
+                                      },
+                                      "iat": {
+                                        "intValue": "0"
+                                      },
+                                      "exp": {
+                                        "intValue": "3600"
+                                      },
+                                      "auth_time": {
+                                        "intValue": "0"
+                                      },
+                                      "sub": {
+                                        "stringValue": "testuser"
+                                      },
+                                      "user_id": {
+                                        "stringValue": "testuser"
+                                      },
+                                      "firebase": {
+                                        "mapValue": {
+                                          "fields": {
+                                            "sign_in_provider": {
+                                              "stringValue": "custom"
+                                            },
+                                            "identities": {
+                                              "mapValue": {
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "headers": {
+                            "mapValue": {
+                            }
+                          },
+                          "inTransaction": {
+                            "boolValue": true
+                          },
+                          "path": {
+                            "pathValue": {
+                              "segments": [{
+                                "simple": "databases"
+                              }, {
+                                "simple": "(default)"
+                              }, {
+                                "simple": "documents"
+                              }, {
+                                "simple": "users"
+                              }, {
+                                "simple": "testuser"
+                              }, {
+                                "simple": "shares"
+                              }, {
+                                "simple": "eVvrdGTxBe5IDzZLdimu"
+                              }]
+                            }
+                          },
+                          "transforms": {
+                            "nullValue": null
+                          },
+                          "writeFields": {
+                            "nullValue": null
+                          },
+                          "readFields": {
+                            "nullValue": null
+                          },
+                          "autoId": {
+                            "boolValue": false
+                          },
+                          "resource": {
+                            "mapValue": {
+                              "fields": {
+                                "data": {
+                                  "mapValue": {
+                                    "fields": {
+                                      "files": {
+                                        "listValue": {
+                                          "values": [{
+                                            "mapValue": {
+                                              "fields": {
+                                                "path": {
+                                                  "stringValue": "a/b"
+                                                },
+                                                "name": {
+                                                  "stringValue": "b"
+                                                }
+                                              }
+                                            }
+                                          }, {
+                                            "mapValue": {
+                                              "fields": {
+                                                "path": {
+                                                  "stringValue": "a/c"
+                                                },
+                                                "name": {
+                                                  "stringValue": "c"
+                                                }
+                                              }
+                                            }
+                                          }, {
+                                            "mapValue": {
+                                              "fields": {
+                                                "path": {
+                                                  "stringValue": "a/d"
+                                                },
+                                                "name": {
+                                                  "stringValue": "d"
+                                                }
+                                              }
+                                            }
+                                          }, {
+                                            "mapValue": {
+                                              "fields": {
+                                                "path": {
+                                                  "stringValue": "a/e"
+                                                },
+                                                "name": {
+                                                  "stringValue": "e"
+                                                }
+                                              }
+                                            }
+                                          }, {
+                                            "mapValue": {
+                                              "fields": {
+                                                "path": {
+                                                  "stringValue": "a/f"
+                                                },
+                                                "name": {
+                                                  "stringValue": "f"
+                                                }
+                                              }
+                                            }
+                                          }, {
+                                            "mapValue": {
+                                              "fields": {
+                                                "path": {
+                                                  "stringValue": "a/g"
+                                                },
+                                                "name": {
+                                                  "stringValue": "g"
+                                                }
+                                              }
+                                            }
+                                          }]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "__name__": {
+                                  "pathValue": {
+                                    "segments": [{
+                                      "simple": "databases"
+                                    }, {
+                                      "simple": "(default)"
+                                    }, {
+                                      "simple": "documents"
+                                    }, {
+                                      "simple": "users"
+                                    }, {
+                                      "simple": "testuser"
+                                    }, {
+                                      "simple": "shares"
+                                    }, {
+                                      "simple": "eVvrdGTxBe5IDzZLdimu"
+                                    }]
+                                  }
+                                },
+                                "id": {
+                                  "stringValue": "eVvrdGTxBe5IDzZLdimu"
+                                }
+                              }
+                            }
+                          },
+                          "method": {
+                            "stringValue": "create"
+                          }
+                        }
+                      }
+                    },
+                    "count": 1
+                  }]
+                }]
+              }]
+            }]
+          }]
+        }]
+      }]
+    }, {
+      "sourcePosition": {
+        "line": 16,
+        "column": 97,
+        "currentOffset": 579,
+        "endOffset": 595
+      },
+      "values": [{
+        "value": {
+          "boolValue": true
+        },
+        "count": 2
+      }, {
+        "value": {
+        },
+        "count": 2
+      }, {
+        "value": {
+          "boolValue": false
+        },
+        "count": 1
+      }]
+    }]
+  }]
+};
+
+const REPORT_LIMIT_SIZE = 15
+
+window.onload = function() {
+  if (data.rules.files.length == 1) {
+    document.body.appendChild(buildFormattedReport(data.report || [], data.rules.files[0].content))
+  } else {
+    document.body.appendChild(document.createTextNode('Only single-file rules supported. ' +
+    'If you encounter this please visit https://github.com/firebase/firebase-tools/issues'))
+  }
+};
+
+/**
+ * Builds the html block with span elements for rule visualization.
+ *
+ * @param expressionList The list of expression blocks.
+ * @param ruleString The full text of the rules with newlines and special characters escaped.
+ * @return A <pre> html element with <span></span> around expressions and subexpressions within
+ *     .write, .read, and .validate tokens so that they can be selected.
+ */
+function buildFormattedReport(expressionList, ruleString) {
+  const elements = Object.keys(expressionList).map((key) => {
+    return mapExpressionBlock(expressionList[key], ruleString)
+  })
+  const withText = interpolateTextNodes(
+    elements,
+    ruleString,
+    0,
+    ruleString.length
+  )
+  var preElement = document.createElement('pre')
+  withText.forEach((element) => preElement.appendChild(element.element))
+  return preElement
+}
+
+/**
+ * Traverses an expression block.
+ *
+ * Each expression needs to be wrapped in a span and so it's children need to be immediately
+ * resolved so they can be added to the element.
+ *
+ * @param expressionBlock The current recursive chunk of expression data.
+ * @param ruleString The full text of the rules with newlines and special characters escaped.
+ * @return A single object with at least the keys start, end, and element. Element is the span
+ *    element for that [sub]expression. The span element should have all it's children
+ *    already added.
+ */
+function mapExpressionBlock(expressionBlock, ruleString) {
+  const start = expressionBlock.sourcePosition.currentOffset
+  const end = expressionBlock.sourcePosition.endOffset + 1
+  const onlyChildSpans = (expressionBlock.children || []).map(
+    (child) => mapExpressionBlock(child, ruleString)
+  )
+  const allChildren = interpolateTextNodes(
+    onlyChildSpans,
+    ruleString,
+    start,
+    end,
+    true
+  )
+  var span = document.createElement('span')
+  allChildren.forEach((child) => {
+    span.appendChild(child.element)
+  })
+  span.classList.add('coverage-expr')
+  span.title = buildValueString(expressionBlock.values);
+  return {
+    element: span,
+    start: start,
+    end: end
+  }
+}
+
+/**
+ * The formatted report data has information about where subexpression are located. It does not,
+ * however, have information about text around these expressions. This function takes a formatted
+ * list of spans (representing expressions) and puts surrounding text into text elements and
+ * returns the list of all elements in that given text-area.
+ *
+ * @param objs the list of spans to have their bounds interpolated. Each element in the list should
+ *    formatted with the keys start, end, and element.
+ * @param ruleString The full text of the rules with newlines and special characters escaped.
+ * @param optStart An optional start index to start gathering text-elements from.
+ * @param optEnd An optional end index to finish gathering text-elements at.
+ * @param whether to remove newlines from the text values.
+ * @return An interpolated list with all indices from start to end of the ruleString being
+ *    included in either a span or a text element.
+ */
+function interpolateTextNodes(objs, ruleString, start = null, end = null, removeNewLines = false) {
+  // Arrays so null objects aren't appended (options)
+  const expressionStart = start !== null ? [{'end': start}] : []
+  const expressionEnd = end !== null ? [{'start': end}] : []
+  const sortedInnerBlocks = (objs || []).sort((a, b) => (a['start'] - b['start']))
+  const blocksWithBounds = [].concat(expressionStart, sortedInnerBlocks, expressionEnd)
+  const interpolatedBlocks = blocksWithBounds.reduce((allChildren, child, idx) => {
+    if (allChildren && allChildren.length) {
+      const lastEnd = allChildren[allChildren.length - 1]['end']
+      const thisStart = child['start']
+      // This is an array so that we don't append null objects
+      if (lastEnd < thisStart) {
+        const text = ruleString.substring(lastEnd, thisStart)
+        const textElement = [{
+          element: document.createTextNode(removeNewLines ? text.replace(/\n\s*/g,' ') : text),
+          'start': allChildren[allChildren.length - 1]['end'],
+          'end': child['start']
+        }]
+        return allChildren.concat(textElement, child)
+      }
+    }
+    return allChildren.concat(child)
+  }, [])
+  return interpolatedBlocks.filter(
+    (child) => child['start'] !== undefined && child['end'] !== undefined
+  )
+}
+
+/**
+ * Creates the mouse-over text for each span.
+ *
+ * @param values The array of value objects formatted as {value: **, count: **}.
+ * @return A single string for the mouse-over text.
+ */
+function buildValueString(values) {
+  if (!values || !values.length) {
+    return 'Expression never evaluated'
+  } else if (values.length >= REPORT_LIMIT_SIZE) {
+    const allCounts = values.reduce((acc, obj) => acc + obj.count, 0)
+    return `${values.length} distinct items returned over ${allCounts} times`
+  } else {
+    return values.map(({value, count}) => {
+      const allowedTypes = ['nullValue', 'boolValue', 'intValue', 'floatValue', 'stringValue',
+        'bytesValue', 'durationValue', 'timestampValue', 'latlngValue', 'pathValue']
+      const compressedTypes = ['mapValue', 'listValue', 'constraintValue']
+      const typeAllowed = allowedTypes.filter(type => value[type] !== undefined).length == 1
+      const typeCompressed = compressedTypes.filter(type => value[type] !== undefined).length >= 1
+      // Format is value = {returnType: returnValue}
+      // A returnType of undefined is an error. Unfortunately the field is called undefined.
+      if (value['undefined']) {
+        // Expression evaluated to error
+        return `Error '${value.undefined.causeMessage}' occurred ${count} time(s)`
+      } else if (typeCompressed) {
+        // These types are recursive and are hard to read
+        return `[object Object] returned ${count} time(s)`
+      } else if (typeAllowed) {
+        // The response is a simple literal
+        // Object.values is not ES2015
+        const realValue = Object.keys(value).map((key) => value[key])[0]
+        return `Value ${JSON.stringify(realValue)} returned ${count} time(s)`
+      } else if (Object.keys(value).length === 0) {
+        // Clause not evaluated because of short-circuit.
+        return `Expression short-circuited ${count} time(s)`
+      } else {
+        // For a properly formatted response each value should have one type.
+        console.error('Found invalid expression-return type.')
+      }
+    }).join('\n')
+  }
+}
+</script>

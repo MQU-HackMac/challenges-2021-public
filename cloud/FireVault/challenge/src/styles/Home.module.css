@@ -1,0 +1,26 @@
+.dropCircle {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  border-radius: 50%;
+  background: white;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes grow {
+  from {
+    opacity: 25%;
+    width: 50px;
+    height: 50px;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 10%;
+    width: 50px;
+    height: 50px;
+    transform: scale(100);
+  }
+}

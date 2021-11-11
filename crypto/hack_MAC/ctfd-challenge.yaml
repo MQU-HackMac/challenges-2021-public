@@ -1,0 +1,65 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "hack MAC"
+author: "Jordan"
+category: crypto
+description: |
+    Our agent on the inside has managed to exfiltrate a client program that is used to communicate with the internal vaccine database at the attached host. 
+    This program is kept under lock and key so be sure to keep an eye out for any security features built into the protocol.
+
+    Luckily, our agent was also able to MITM some traffic between the program and the database to support your analysis.
+
+    **Attached Files:**
+    - vaccine_client_linux (sha256: d1c5ec5ac03246e77e73fa0daedf8edba2244c959b6a689b0cde45f87f795288)
+    - vaccine.pcap (sha256: d56b62e7a21f1b95b2389902bb475cfa7c9af8c312dd4744989ff5638a61f16a)
+value: 500
+type: dynamic
+extra:
+    initial: 500
+    decay: 15
+    minimum: 100
+
+image: null
+host: null
+
+# Optional settings
+
+# connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
+connection_info: nc hack-mac.chals.hackmac.xyz 1337
+
+# Flags specify answers that your challenge use. You should generally provide at least one.
+# Can be removed if unused
+# Accepts strings or dictionaries of CTFd API data
+flags:
+    - HACKMAC{y0u_r3411y_h4ck3d_7h47_m4c!}
+
+tags:
+    - hard
+
+# Provide paths to files from the same directory that this file is in
+# Accepts strings
+# files:
+#     - publish/vaccine_client_linux
+#     - publish/vaccine.pcap
+
+# Hints are used to give players a way to buy or have suggestions. They are not
+# required but can be nice.
+# Can be removed if unused
+# Accepts dictionaries or strings
+# hints:
+#     - {
+#         content: "This hint costs points",
+#         cost: 10
+#     }
+#     - This hint is free
+
+# The state of the challenge.
+# If the field is omitted, the challenge is visible by default.
+# If provided, the field can take one of two values: hidden, visible.
+state: visible
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"

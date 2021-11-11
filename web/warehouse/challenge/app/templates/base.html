@@ -1,0 +1,8 @@
+<!doctype html>
+<link rel="stylesheet" href={{ url_for("static", filename="style.css" ) }}>
+<title>{% block title %}{% endblock %}</title>
+<section id="content-container">
+    <h1>Thomas' Warehouse</h1>
+    {% block content %}{% endblock %}
+    <!-- <a href="/login?debug=1">Debug</a> -->
+</section>

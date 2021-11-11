@@ -1,0 +1,32 @@
+[build]
+  command = "yarn run build:hackmac"
+  publish = "client/build"
+
+[[redirects]]
+  from = "https://solidity-05.hackmac.openzeppelin.com/*"
+  to = "https://blockz.hackmac.xyz/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://hackmac.zeppelin.solutions/*"
+  to = "https://blockz.hackmac.xyz/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://hackmac-devcon3.zeppelin.solutions/*"
+  to = "https://blockz.hackmac.xyz/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://hackmac-ethuoft.zeppelin.solutions/*"
+  to = "https://blockz.hackmac.xyz/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 200

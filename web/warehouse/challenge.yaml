@@ -1,0 +1,24 @@
+apiVersion: kctf.dev/v1
+kind: Challenge
+metadata:
+  name: warehouse
+spec:
+  deployed: true
+  powDifficultySeconds: 0
+  network:
+    public: true
+    ports:
+      - protocol: "HTTPS"
+        targetPort: 1337
+  healthcheck:
+    # TIP: disable the healthcheck during development
+    enabled: false
+    image: eu.gcr.io/hack-mac-2021-kctf/warehouse-healthcheck:51465d5de1291eaeb382450fb96c4a78ea818f17fe6a0cdddb960595ba723da5
+  podTemplate:
+    template:
+      spec:
+        containers:
+          - name: challenge
+        volumes:
+          - name: app
+  image: eu.gcr.io/hack-mac-2021-kctf/warehouse-challenge:aa73adfbc99c99eb80b8e8b161e6b63002280575cd14955b902c9f8e6f6f394c

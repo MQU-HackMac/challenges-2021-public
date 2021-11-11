@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Private stuff
+client/.env
+contracts/.env
+
+# Contracts
+contracts/build/
+contracts/cache/
+contracts/node_modules/
+
+# Client
+client/build/
+client/node_modules/
+
+.env

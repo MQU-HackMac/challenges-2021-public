@@ -1,0 +1,19 @@
+{
+  "name": "firevault-solve",
+  "version": "1.0.0",
+  "description": "A solve script for Hack Mac 2021's FireVault challenge",
+  "main": "solve.js",
+  "author": "Jordan Bertasso",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node solve.js"
+  },
+  "dependencies": {
+    "@firebase/app": "^0.7.1",
+    "@firebase/firestore": "^3.1.0",
+    "axios": "^0.21.4",
+    "firebase": "^9.1.0",
+    "firebase-admin": "^9.12.0"
+  }
+}
